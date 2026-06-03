@@ -10,57 +10,77 @@
 
 <body>
 
-    <header>
-        <nav>
-            <h2>Raj Aaryan</h2>
+    <nav>
+        <div class="logo">Raj Aaryan</div>
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
     <section class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <img src="profile.JPG" alt="Raj Aaryan" class="profile-pic">
+        <div class="hero-text">
 
-            <div>
+            <div class="terminal">
 
-                <p class="tag">Software Engineer @ Jio Platforms</p>
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
 
-                <h1>Raj Aaryan</h1>
+                <div class="terminal-body">
 
-                <h3>BITS Pilani Graduate</h3>
+                    <p class="command">$ whoami</p>
 
-                <p class="hero-description">
-                    Backend Engineer with 3+ years of experience building scalable
-                    distributed systems using Java, Spring Boot, Kafka,
-                    Elasticsearch, AWS and Microservices.
-                </p>
+                    <h1>Raj Aaryan</h1>
 
-                <div class="buttons">
+                    <p class="role"> Software Engineer @ Jio Platforms</p>
 
-                    <a href="resume.pdf" class="btn">
-                        Download Resume
-                    </a>
+                    <p class="hero-tagline">Java • Spring Boot • Kafka • AWS • System Design </p>
 
-                    <a href="https://www.linkedin.com/in/raj-aaryan-28484b159/"
-                        target="_blank"
-                        class="btn secondary">
-                        LinkedIn
-                    </a>
+                    <br>
 
-                    <a href="https://github.com/rajaaryan0753"
-                        target="_blank"
-                        class="btn secondary">
-                        GitHub
-                    </a>
+                    <p class="command">$ cat about.txt</p>
+
+                    <p>
+                Software Engineer with 3+ years of experience building scalable backend
+                systems and distributed applications. Currently working at Jio Platforms,
+                focusing on microservices, observability, and high-performance backend services.
+                 </p>
+
+                     <p>
+    I enjoy designing robust software architectures, solving complex engineering
+    problems, and mentoring developers. My interests include System Design,
+    Distributed Systems, Low-Level Design, and Backend Engineering.
+</p>
+
+                    <div class="hero-buttons">
+
+                        <a href="resume.pdf" class="btn">
+                            Resume
+                        </a>
+
+                        <a href="https://github.com/rajaaryan0753"
+                           target="_blank"
+                           class="btn secondary">
+                            GitHub
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/raj-aaryan-28484b159/"
+                           target="_blank"
+                           class="btn secondary">
+                            LinkedIn
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -68,7 +88,15 @@
 
         </div>
 
-    </section>
+        <div class="hero-image">
+            <img src="profile.jpg"
+                 alt="Raj Aaryan"
+                 class="profile-pic">
+        </div>
+
+    </div>
+
+</section>
 
     <section class="stats">
 
@@ -88,8 +116,8 @@
         </div>
 
         <div class="stat-card">
-            <h2>10</h2>
-            <p>Scholarship Semesters</p>
+            <h2>BITS</h2>
+            <p>Pilani Graduate</p>
         </div>
 
     </section>
@@ -103,13 +131,12 @@
             <p>
                 I am a Software Engineer currently working at Jio Platforms.
                 My interests include backend engineering, distributed systems,
-                microservices architecture, low-level design and high-level
-                system design.
+                system design, microservices architecture and software craftsmanship.
             </p>
 
             <p>
-                I enjoy designing scalable software systems and mentoring
-                engineers while continuously improving engineering practices.
+                I enjoy building scalable systems, mentoring engineers and
+                designing software that remains maintainable as it grows.
             </p>
 
         </div>
@@ -120,56 +147,33 @@
 
         <h2>Experience</h2>
 
-        <div class="card">
+        <div class="timeline-item">
 
             <h3>Jio Platforms</h3>
 
-            <p class="subtitle">
-                Software Engineer | 2022 - Present
-            </p>
+            <span class="timeline-date">
+                Software Engineer • 2022 - Present
+            </span>
 
             <ul>
                 <li>Developed scalable backend services.</li>
-                <li>Worked extensively with Elasticsearch logging and monitoring.</li>
-                <li>Participated in system design and architecture discussions.</li>
-                <li>Mentored interns and conducted code reviews.</li>
+                <li>Worked extensively with Elasticsearch logging.</li>
+                <li>Participated in architecture discussions.</li>
+                <li>Mentored interns and reviewed code.</li>
             </ul>
 
         </div>
 
-        <div class="card">
+        <div class="timeline-item">
 
             <h3>Samsung Electronics</h3>
 
-            <p class="subtitle">
+            <span class="timeline-date">
                 Software Engineer Intern
-            </p>
+            </span>
 
             <ul>
                 <li>Worked on encryption and data security solutions.</li>
-                <li>Contributed to secure software development practices.</li>
-            </ul>
-
-        </div>
-
-    </section>
-
-    <section>
-
-        <h2>Education</h2>
-
-        <div class="card">
-
-            <h3>BITS Pilani, Pilani Campus</h3>
-
-            <p>
-                Dual Degree
-            </p>
-
-            <ul>
-                <li>B.E. Electronics & Instrumentation</li>
-                <li>M.Sc. Mathematics</li>
-                <li>2017 - 2022</li>
             </ul>
 
         </div>
@@ -180,42 +184,114 @@
 
         <h2>Featured Projects</h2>
 
-        <div class="project-grid">
+        <div class="projects">
 
-            <div class="card">
+            <div class="project-card">
                 <h3>Splitwise</h3>
-                <p>Expense sharing system with debt simplification.</p>
-                <p><strong>Tech:</strong> Java, Spring Boot, MySQL</p>
+                <p>
+                    Expense sharing platform featuring debt simplification.
+                </p>
+                <span class="tech">
+                    Java • Spring Boot • MySQL
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
             </div>
 
-            <div class="card">
+            <div class="project-card">
                 <h3>Parking Lot System</h3>
-                <p>Extensible parking lot design.</p>
-                <p><strong>Tech:</strong> Java, Design Patterns</p>
+                <p>
+                    Extensible parking lot design using Strategy and Observer patterns.
+                </p>
+                <span class="tech">
+                    Java • LLD
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
             </div>
 
-            <div class="card">
+            <div class="project-card">
                 <h3>Elevator System</h3>
-                <p>Multi-elevator scheduling system.</p>
-                <p><strong>Tech:</strong> Java, Observer Pattern</p>
+                <p>
+                    Multi-elevator scheduling and request handling.
+                </p>
+                <span class="tech">
+                    Java • Design Patterns
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
             </div>
 
-            <div class="card">
+            <div class="project-card">
                 <h3>ATM System</h3>
-                <p>Object-oriented ATM design.</p>
-                <p><strong>Tech:</strong> Java, OOP</p>
+                <p>
+                    Extensible ATM design supporting multiple transaction types.
+                </p>
+                <span class="tech">
+                    Java • OOP
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
             </div>
 
-            <div class="card">
+            <div class="project-card">
                 <h3>BookMyShow</h3>
-                <p>Movie ticket booking system design.</p>
-                <p><strong>Tech:</strong> Java, LLD</p>
+                <p>
+                    Ticket booking platform with scalable architecture.
+                </p>
+                <span class="tech">
+                    Java • LLD
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
             </div>
 
-            <div class="card">
+            <div class="project-card">
                 <h3>URL Shortener</h3>
-                <p>Scalable URL shortening service.</p>
-                <p><strong>Tech:</strong> Java, Redis</p>
+                <p>
+                    Scalable URL shortening service.
+                </p>
+                <span class="tech">
+                    Java • Redis
+                </span>
+                <a href="#" class="project-link">
+                 View Project →
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="skills">
+
+        <h2>Skills</h2>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>Backend</h3>
+                <p>Java, Spring Boot, Kafka</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Databases</h3>
+                <p>MySQL, Redis, Elasticsearch</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Cloud & DevOps</h3>
+                <p>AWS, Docker, Git</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Architecture</h3>
+                <p>Microservices, System Design, Design Patterns</p>
             </div>
 
         </div>
@@ -237,61 +313,14 @@
 
     </section>
 
-    <section id="skills">
-
-        <h2>Skills</h2>
-
-        <div class="skill-section">
-
-            <div class="card">
-                <h3>Backend</h3>
-                <p>Java, Spring Boot, Kafka</p>
-            </div>
-
-            <div class="card">
-                <h3>Database</h3>
-                <p>MySQL, Redis, Elasticsearch</p>
-            </div>
-
-            <div class="card">
-                <h3>Cloud & DevOps</h3>
-                <p>AWS, Docker</p>
-            </div>
-
-            <div class="card">
-                <h3>Architecture</h3>
-                <p>Microservices, System Design, Design Patterns</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section>
-
-        <h2>System Design Notes</h2>
-
-        <div class="card">
-
-            <ul>
-                <li>Parking Lot Design</li>
-                <li>Splitwise Design</li>
-                <li>Elevator Design</li>
-                <li>ATM Design</li>
-                <li>BookMyShow Design</li>
-            </ul>
-
-        </div>
-
-    </section>
-
     <section id="contact">
 
         <h2>Contact</h2>
 
         <div class="card">
 
-            <p>Email: rajaryangpj@gmail.com</p>
+            <p> 📧 rajaryangpj@gmail.com </p>
+            <p> 📍 Mumbai, India</p>
 
             <p>
                 LinkedIn:
