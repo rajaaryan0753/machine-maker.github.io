@@ -84,4 +84,55 @@
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    const phrases = [
+    'Software Engineer @ Jio Platforms',
+    'Building Scalable Microservices',
+    'Spring Boot • Kafka • Redis',
+    'Distributed Systems Engineer',
+    'Elasticsearch • AWS',
+    'System Design Enthusiast'
+];
+
+const rotatingText = document.getElementById('rotating-text');
+
+if (rotatingText) {
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+
+        const currentPhrase = phrases[phraseIndex];
+
+        if (!isDeleting) {
+            rotatingText.textContent =
+                currentPhrase.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1800);
+                return;
+            }
+
+        } else {
+
+            rotatingText.textContent =
+                currentPhrase.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+        }
+
+        setTimeout(typeEffect, isDeleting ? 40 : 80);
+    }
+
+    typeEffect();
+}
 })();

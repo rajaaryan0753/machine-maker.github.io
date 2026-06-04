@@ -549,6 +549,33 @@ main {
     margin-bottom: 16px;
     line-height: 1.65;
 }
+.role-container{
+    margin: 12px 0 24px;
+}
+
+#rotating-text {
+    color: #3b82f6;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+#rotating-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+#rotating-text.fade{
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
 
 /* ── Contact ── */
 
