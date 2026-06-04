@@ -1,6 +1,31 @@
 (function () {
     'use strict';
 
+    /* ── Theme toggle ── */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (themeToggle) {
+            const isDark = theme === 'dark';
+            themeToggle.setAttribute(
+                'aria-label',
+                isDark ? 'Switch to light mode' : 'Switch to dark mode'
+            );
+            themeToggle.title = isDark ? 'Light mode' : 'Dark mode';
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+        });
+        applyTheme(root.getAttribute('data-theme') || 'dark');
+    }
+
     /* ── Boot sequence ── */
     const bootLines = [
         { text: '$ ssh raj@portfolio.dev', cls: 'cmd-line' },
@@ -79,7 +104,7 @@
             }
         });
         navAnchors.forEach(a => {
-            a.style.color = a.getAttribute('href') === '#' + current ? '#e2e8f0' : '';
+            a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
         });
     }
 
