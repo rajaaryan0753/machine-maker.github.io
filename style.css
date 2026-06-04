@@ -6,7 +6,9 @@
     box-sizing: border-box;
 }
 
-:root {
+:root,
+[data-theme="dark"] {
+    color-scheme: dark;
     --bg: #080b10;
     --surface: #0f1419;
     --surface-2: #151b24;
@@ -18,10 +20,84 @@
     --green-dim: rgba(52, 211, 153, 0.15);
     --blue: #60a5fa;
     --blue-dim: rgba(96, 165, 250, 0.12);
+    --nav-bg: rgba(8, 11, 16, 0.85);
+    --nav-mobile-bg: rgba(8, 11, 16, 0.98);
+    --boot-bg: #000;
+    --glow-green: rgba(52, 211, 153, 0.05);
+    --glow-blue: rgba(96, 165, 250, 0.05);
+    --initials-border: rgba(52, 211, 153, 0.25);
+    --btn-primary-fg: #052e1a;
+    --btn-primary-hover: #2dd4a0;
+    --ghost-hover-border: rgba(255, 255, 255, 0.18);
+    --tag-border: rgba(96, 165, 250, 0.2);
+    --card-hover-border: rgba(255, 255, 255, 0.12);
+    --project-hover-border: rgba(52, 211, 153, 0.3);
+    --contact-hover-border: rgba(52, 211, 153, 0.3);
+    --accent-type: #3b82f6;
+    --selection-fg: #052e1a;
+    --linkedin-icon: #5cadff;
+    --github-icon-fg: #e2e8f0;
+    --github-icon-bg: rgba(255, 255, 255, 0.06);
+    --github-icon-border: rgba(255, 255, 255, 0.1);
+    --github-icon-fg-hover: #fff;
+    --github-icon-bg-hover: rgba(255, 255, 255, 0.1);
+    --github-icon-border-hover: rgba(255, 255, 255, 0.18);
     --mono: 'JetBrains Mono', 'Fira Code', monospace;
     --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --max: 860px;
+    --gutter: 24px;
     --radius: 10px;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f4f7fb;
+    --surface: #ffffff;
+    --surface-2: #eef2f7;
+    --border: rgba(15, 23, 42, 0.1);
+    --text: #0f172a;
+    --muted: #64748b;
+    --dim: #475569;
+    --green: #059669;
+    --green-dim: rgba(5, 150, 105, 0.12);
+    --blue: #2563eb;
+    --blue-dim: rgba(37, 99, 235, 0.1);
+    --nav-bg: rgba(244, 247, 251, 0.92);
+    --nav-mobile-bg: rgba(244, 247, 251, 0.98);
+    --boot-bg: #e8edf4;
+    --glow-green: rgba(5, 150, 105, 0.08);
+    --glow-blue: rgba(37, 99, 235, 0.08);
+    --initials-border: rgba(5, 150, 105, 0.28);
+    --btn-primary-fg: #ffffff;
+    --btn-primary-hover: #047857;
+    --ghost-hover-border: rgba(15, 23, 42, 0.2);
+    --tag-border: rgba(37, 99, 235, 0.22);
+    --card-hover-border: rgba(15, 23, 42, 0.14);
+    --project-hover-border: rgba(5, 150, 105, 0.35);
+    --contact-hover-border: rgba(5, 150, 105, 0.35);
+    --accent-type: #2563eb;
+    --selection-fg: #ffffff;
+    --linkedin-icon: #0a66c2;
+    --github-icon-fg: #0f172a;
+    --github-icon-bg: rgba(15, 23, 42, 0.06);
+    --github-icon-border: rgba(15, 23, 42, 0.1);
+    --github-icon-fg-hover: #0f172a;
+    --github-icon-bg-hover: rgba(15, 23, 42, 0.1);
+    --github-icon-border-hover: rgba(15, 23, 42, 0.18);
+}
+
+@media (min-width: 1100px) {
+    :root {
+        --max: 1040px;
+        --gutter: 32px;
+    }
+}
+
+@media (min-width: 1400px) {
+    :root {
+        --max: 1200px;
+        --gutter: 40px;
+    }
 }
 
 html {
@@ -35,6 +111,19 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 50% 70% at 0% 40%, var(--glow-green), transparent 55%),
+        radial-gradient(ellipse 50% 70% at 100% 60%, var(--glow-blue), transparent 55%);
+    transition: opacity 0.25s ease;
 }
 
 body.booting {
@@ -57,7 +146,7 @@ img {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: #000;
+    background: var(--boot-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,16 +203,17 @@ img {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(8, 11, 16, 0.85);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .nav-inner {
-    max-width: calc(var(--max) + 48px);
+    max-width: calc(var(--max) + var(--gutter) * 2);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--gutter);
     height: 56px;
     display: flex;
     align-items: center;
@@ -143,11 +233,58 @@ img {
     height: 36px;
     border-radius: 8px;
     background: var(--green-dim);
-    border: 1px solid rgba(52, 211, 153, 0.25);
+    border: 1px solid var(--initials-border);
     color: var(--green);
     font-family: var(--mono);
     font-size: 0.75rem;
     font-weight: 600;
+}
+
+.nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--dim);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.theme-toggle:hover {
+    color: var(--text);
+    border-color: var(--ghost-hover-border);
+}
+
+.theme-icon {
+    display: block;
+}
+
+.theme-icon--moon {
+    display: none;
+}
+
+[data-theme="light"] .theme-icon--sun {
+    display: none;
+}
+
+[data-theme="light"] .theme-icon--moon {
+    display: block;
+}
+
+.nav-links a.is-active {
+    color: var(--text);
 }
 
 .nav-links {
@@ -189,7 +326,7 @@ img {
 main {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--gutter);
 }
 
 .section {
@@ -313,6 +450,24 @@ main {
 
 /* ── Buttons ── */
 
+.icon-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .btn {
     display: inline-block;
     padding: 11px 22px;
@@ -328,12 +483,12 @@ main {
 
 .btn-primary {
     background: var(--green);
-    color: #052e1a;
+    color: var(--btn-primary-fg);
 }
 
 .btn-primary:hover {
-    background: #2dd4a0;
-    color: #052e1a;
+    background: var(--btn-primary-hover);
+    color: var(--btn-primary-fg);
 }
 
 .btn-ghost {
@@ -343,7 +498,7 @@ main {
 }
 
 .btn-ghost:hover {
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: var(--ghost-hover-border);
     color: var(--text);
 }
 
@@ -425,7 +580,7 @@ main {
     display: inline-block;
     padding: 5px 12px;
     background: var(--blue-dim);
-    border: 1px solid rgba(96, 165, 250, 0.2);
+    border: 1px solid var(--tag-border);
     border-radius: 6px;
     font-size: 0.8rem;
     color: var(--blue);
@@ -444,7 +599,7 @@ main {
 }
 
 .exp-card:hover {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--card-hover-border);
 }
 
 .exp-header {
@@ -516,7 +671,7 @@ main {
 }
 
 .project-card:hover {
-    border-color: rgba(52, 211, 153, 0.3);
+    border-color: var(--project-hover-border);
     transform: translateY(-3px);
 }
 
@@ -554,7 +709,7 @@ main {
 }
 
 #rotating-text {
-    color: #3b82f6;
+    color: var(--accent-type);
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.7rem;
     font-weight: 500;
@@ -607,7 +762,7 @@ main {
 }
 
 .contact-link:hover {
-    border-color: rgba(52, 211, 153, 0.3);
+    border-color: var(--contact-hover-border);
     color: var(--text);
 }
 
@@ -615,14 +770,46 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    background: var(--green-dim);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid transparent;
     flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.contact-icon--email {
+    background: rgba(52, 211, 153, 0.12);
+    border-color: rgba(52, 211, 153, 0.2);
+    color: var(--green);
+}
+
+.contact-icon--linkedin {
+    background: rgba(10, 102, 194, 0.12);
+    border-color: rgba(10, 102, 194, 0.22);
+    color: var(--linkedin-icon);
+}
+
+.contact-icon--github {
+    background: var(--github-icon-bg);
+    border-color: var(--github-icon-border);
+    color: var(--github-icon-fg);
+}
+
+.contact-link:hover .contact-icon--email {
+    background: rgba(52, 211, 153, 0.2);
+    color: #4ade80;
+}
+
+.contact-link:hover .contact-icon--linkedin {
+    background: rgba(10, 102, 194, 0.22);
+    color: #7cbcff;
+}
+
+.contact-link:hover .contact-icon--github {
+    background: var(--github-icon-bg-hover);
+    border-color: var(--github-icon-border-hover);
+    color: var(--github-icon-fg-hover);
 }
 
 /* ── Footer ── */
@@ -634,6 +821,122 @@ footer {
     font-size: 0.8rem;
     font-family: var(--mono);
     border-top: 1px solid var(--border);
+}
+
+/* ── Large screens ── */
+
+@media (min-width: 1024px) {
+
+    .hero {
+        min-height: auto;
+        padding: 110px 0 72px;
+    }
+
+    .hero-inner {
+        gap: 64px;
+    }
+
+    .hero-tagline {
+        max-width: none;
+        font-size: 1.1rem;
+    }
+
+    .hero-photo img {
+        width: 300px;
+        height: 380px;
+    }
+
+    #about.section {
+        display: grid;
+        grid-template-columns: 1fr minmax(280px, 360px);
+        gap: 24px 48px;
+        align-items: start;
+    }
+
+    #about .section-title {
+        grid-column: 1 / -1;
+        margin-bottom: 8px;
+    }
+
+    .about-text {
+        margin-bottom: 0;
+    }
+
+    .stats-row {
+        gap: 12px;
+    }
+
+    .stat {
+        padding: 20px 12px;
+    }
+
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 40px;
+    }
+
+    #experience.section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    #experience .section-title {
+        grid-column: 1 / -1;
+        margin-bottom: 16px;
+    }
+
+    .exp-card--compact {
+        grid-column: 1 / -1;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #contact.section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 56px;
+        align-items: start;
+    }
+
+    #contact .section-title {
+        grid-column: 1;
+        margin-bottom: 12px;
+    }
+
+    .contact-intro {
+        grid-column: 1;
+        max-width: none;
+        margin-bottom: 0;
+    }
+
+    .contact-links {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        align-self: center;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .skills-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section-title {
+        font-size: 1.45rem;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    #rotating-text {
+        font-size: 1.85rem;
+    }
 }
 
 /* ── Mobile ── */
@@ -652,7 +955,7 @@ footer {
         right: 0;
         flex-direction: column;
         gap: 0;
-        background: rgba(8, 11, 16, 0.98);
+        background: var(--nav-mobile-bg);
         border-bottom: 1px solid var(--border);
         padding: 8px 0 16px;
     }
@@ -703,7 +1006,15 @@ footer {
     }
 }
 
+.stat,
+.exp-card,
+.project-card,
+.contact-link,
+.tag {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
 ::selection {
     background: var(--green);
-    color: #052e1a;
+    color: var(--selection-fg);
 }
